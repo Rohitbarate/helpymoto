@@ -6,15 +6,41 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Input from '../../components/atoms/Input';
+import auth from '@react-native-firebase/auth';
 
-const AddUserInfo = () => {
+const AddUserInfo = ({navigation}) => {
+  const [user, setUser] = useState(null);
+
+  // useEffect(()=>{
+  //    AsyncStorage.getItem('@user_info').then((userData)=>{
+  //     setUser(JSON.parse(userData));
+  //     console.log(user);
+
+  //   })
+  // },[])
+
+  const userAllSet = () => {
+    AsyncStorage.getItem('@user_info').then((userData)=>{
+      setUser(JSON.parse(userData))
+      console.log('user'+user)})
+    // const userData = await auth().currentUser;
+    // setuser(userData);
+    // console.log(JSON.stringify(user));
+    const userData ={
+      ...user,
+      isAllSet:true
+    }
+    AsyncStorage.setItem('@user_info',JSON.stringify(userData))
+    console.log(userData)
+  };
+
   return (
     <ScrollView
       keyboardShouldPersistTaps="always"
-      style={{flex: 1, paddingHorizontal: 20,}}>
-      
+      style={{flex: 1, paddingHorizontal: 20, backgroundColor: '#fff'}}>
       <Text
         style={{
           color: '#000',
@@ -25,39 +51,47 @@ const AddUserInfo = () => {
         Add your info
       </Text>
       <View style={styles.container}>
-      <Input placeHolder="First name" isSecure={false} keyboardType="default" />
-      <Input placeHolder="Last name" isSecure={false} keyboardType="default" />
-      <Text style={{color: 'grey', fontSize: 12, textAlign: 'left'}}>
-        Make sure it matches the name on your government ID.
-      </Text>
-      <Input
-        placeHolder="Phone number"
-        isSecure={false}
-        keyboardType="number-pad"
-      />
-      <Input placeHolder="Email" isSecure={false} keyboardType="default" />
-      <Input placeHolder="Password" isSecure={true} keyboardType="default" />
-      <Text style={{color: '#000', fontSize: 16}}>
-        By selecting{' '}
-        <Text style={{fontWeight: 'bold'}}>Agree and continue</Text>, I agree to
-        Helpy moto's{' '}
-      </Text>
-      <TouchableOpacity>
-        <Text
-          style={{
-            textDecorationStyle: 'solid',
-            textDecorationColor: '#000',
-            textDecorationLine: 'underline',
-            color: '#000',
-            fontSize: 16,
-          }}>
-          Term and service,Payments Terms of Service and Nondiscrimination
-          Policy, and acknowledge the Privacy Policy.
+        <Input
+          placeHolder="First name"
+          isSecure={false}
+          keyboardType="default"
+        />
+        <Input
+          placeHolder="Last name"
+          isSecure={false}
+          keyboardType="default"
+        />
+        <Text style={{color: 'grey', fontSize: 12, textAlign: 'left'}}>
+          Make sure it matches the name on your government ID.
         </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.btnText}>Agree and continue</Text>
-      </TouchableOpacity>
+        <Input
+          placeHolder="Phone number"
+          isSecure={false}
+          keyboardType="number-pad"
+        />
+        <Input placeHolder="Email" isSecure={false} keyboardType="default" />
+        <Input placeHolder="Password" isSecure={true} keyboardType="default" />
+        <Text style={{color: '#000', fontSize: 16}}>
+          By selecting{' '}
+          <Text style={{fontWeight: 'bold'}}>Agree and continue</Text>, I agree
+          to Helpy moto's{' '}
+        </Text>
+        <TouchableOpacity>
+          <Text
+            style={{
+              textDecorationStyle: 'solid',
+              textDecorationColor: '#000',
+              textDecorationLine: 'underline',
+              color: '#000',
+              fontSize: 16,
+            }}>
+            Term and service,Payments Terms of Service and Nondiscrimination
+            Policy, and acknowledge the Privacy Policy.
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => userAllSet()} style={styles.btn}>
+          <Text style={styles.btnText}>Agree and continue</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -72,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     flexDirection: 'column',
     flex: 1,
-    marginBottom:20
+    marginBottom: 20,
   },
   btn: {
     width: '90%',
@@ -81,8 +115,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'#5D5FEF',
-    alignSelf:'center'
+    backgroundColor: '#5D5FEF',
+    alignSelf: 'center',
   },
   btnText: {
     color: '#fff',

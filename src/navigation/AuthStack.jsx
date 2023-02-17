@@ -14,11 +14,11 @@ const AuthStack = () => {
     screenOptions={{
         headerShown:false
     }}
-    initialRouteName="login"
+    initialRouteName="signup"
     >
         <Stack.Screen name='signup' component={Signup} />
         <Stack.Screen name='login' component={Login} />
-        {/* <Stack.Screen name='Add info' component={AddUserInfo} /> */}
+        <Stack.Screen name='Add info' component={AddUserInfo} options={{headerShown:true,headerTitle:''}} />
         <Stack.Screen name='forgotPass' component={ForgotPass} />
     </Stack.Navigator>
   )

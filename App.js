@@ -9,12 +9,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const App = () => {
   const [authenticated, setAutheticated] = useState(true);
   const [loggedUser, setLoggedUser] = useState(null);
+  // const [isAllSet,setIsAllSet] = useState(false)
+
+
+  
+ 
 
   auth().onAuthStateChanged(user => {
     if (user) {
       setAutheticated(true);
       setLoggedUser(user);
-      storeData(loggedUser);
+      // storeData(loggedUser);
       // Alert.alert("Login successfully 🎉🎉")
     } else {
       setAutheticated(false);
@@ -23,21 +28,39 @@ const App = () => {
   });
 
 
-  const storeData = async value => {
-    try {
-      const Val = JSON.stringify(value);
-      await AsyncStorage.setItem('@user_info', Val);
-      console.log("done");
-    } catch (e) {
-      // saving error
-      console.log(e);
-    }
-  };
+  // const storeData = async value => {
+  //   try {
+  //     const Val ={
+  //       value,
+  //       isAllSet:false
+  //     }
+  //     await AsyncStorage.setItem('@user_info', JSON.stringify(Val));
+  //     console.log(JSON.stringify(Val));
+  //     getData()
+  //   } catch (e) {
+  //     // saving error
+  //     console.log(e);
+  //   }
+  // };
+
+  
+  // const getData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('@user_info');
+  //     if (value !== null) {
+  //       setIsAllSet(JSON.parse(value.isAllSet));
+  //       console.log("rohit: "+isAllSet);
+  //     }
+  //   } catch (e) {
+  //     // error reading value
+  //     console.log('error', e);
+  //   }
+  // };
 
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#5D5FEF" barStyle="dark-content" />
-      {!authenticated ? <AuthStack /> : <RootStack />}
+      {authenticated ? <RootStack /> : <AuthStack />}
     </NavigationContainer>
   );
 };

@@ -20,16 +20,11 @@ const Login = ({navigation}) => {
   const [otp, setOtp] = useState('');
   const [confirm, setConfirm] = useState(null);
   const [loading, setLoading] = useState(false);
+  // const [authenticated, setAutheticated] = useState(true);
+
  
   
 
-  // useEffect(() => {
-  //  if(authenticated){
-  //   navigation.replace('Home',{
-  //     loggedUser:loggedUser
-  //   })
-  //  }
-  // }, [authenticated])
   
 
   const loginWithOtp = async number => {
@@ -56,7 +51,18 @@ const Login = ({navigation}) => {
     setLoading(false);
   }
 
-
+  // auth().onAuthStateChanged(user => {
+  //   if (user) {
+  //     // setAutheticated(true);
+  //     setLoggedUser(user);
+  //     storeData(loggedUser);
+  //     // Alert.alert("Login successfully 🎉🎉")
+  //     // navigation.navigate('Add info')
+  //   } else {
+  //     // setAutheticated(false);
+  //     // Alert.alert("Login failed!")
+  //   }
+  // });
   return (
     <KeyboardAvoidingView style={{flex: 1, backgroundColor: '#fff'}}>
       <ScrollView
@@ -211,6 +217,33 @@ const Login = ({navigation}) => {
           </View>
         </View>
       </ScrollView>
+      { confirm && <View style={styles.infoBar}>
+      <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}} >
+     <ActivityIndicator
+        size={24}
+        color={'#15ff00'}
+        hidesWhenStopped
+
+      />
+        <Text style={{color:'#fff',fontSize:14,fontWeight:'500',marginLeft:5}} >
+        
+          Auto Verifying, {mobNo}</Text>
+          </View>
+        <TouchableOpacity
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={() => {
+                  setConfirm(null);
+                  setOtp('');
+                  setLoading(false)
+                }}>
+                <Text style={{color: '#15ff00', fontSize: 15, fontWeight: '900'}}>
+                  EDIT PHONE
+                </Text>
+              </TouchableOpacity>
+      </View>}
     </KeyboardAvoidingView>
   );
 };
@@ -299,4 +332,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 15,
   },
+  infoBar:{
+    width:'100%',
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-around',
+    height:50,
+    backgroundColor:'#5D5FEF'
+  }
 });
