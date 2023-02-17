@@ -12,24 +12,13 @@ import {CustomerRating} from "../../components/data/DATA";
 import RatingCard from "../../components/molecules/RatingCard";
 import Icon from "react-native-vector-icons/Feather";
 import CollapsibleView from "../../components/molecules/CollapsibleView";
-import call from "react-native-phone-call";
 
 
 
-const ServiceDetails = ({ route }) => {
+const ServiceDetails = ({ route,navigation }) => {
   const item = route.params.item;
   const {FAQ} = item
-  const Customer_care_num = '9810876961'
 
-function placeCall() {
-  const args = {
-    number: Customer_care_num,
-    prompt: true,
-    skipCanOpen: true,
-  };
-
-  call(args).catch(console.error);
-}
 
   return (
     <ScrollView
@@ -66,11 +55,14 @@ function placeCall() {
               Takes {item.time} Hours
             </Text>
           </View>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+          onPress={()=>navigation.navigate('Payment',
+          {serviceName:item.serviceName,price:item.price})}
+           style={styles.button}
+           >
             <Text
               style={{
                 fontSize: 14,
-
                 lineHeight: 20,
                 paddingHorizontal: 24,
                 paddingVertical: 4,
@@ -81,14 +73,14 @@ function placeCall() {
             </Text>
           </TouchableOpacity>
         </View>
-        <View
+        {/* <View
         style={{
           marginTop:30,
           alignItems:'center'
         }}
         >
         <TouchableOpacity
-        onPress={placeCall}
+        onPress={()=>{}}
          style={[styles.button,{width:200,paddingVertical:10}]}>
             <Text
               style={{
@@ -102,10 +94,10 @@ function placeCall() {
             >
              Book Service 
             </Text>
-            {/* <Text style={{color:'#fff',fontSize: 12,fontStyle:'italic'}}>by placing call to Customer care</Text> */}
+            <Text style={{color:'#fff',fontSize: 12,fontStyle:'italic'}}>by placing call to Customer care</Text> 
           </TouchableOpacity>
-          <Text style={{color:'#000',fontSize: 12,fontStyle:'italic'}}>*by placing call to customer care</Text>
-        </View>
+        </View> */}
+
       </View>
       <View style={[styles.serviceContainer, styles.VIEW]}>
         <Text

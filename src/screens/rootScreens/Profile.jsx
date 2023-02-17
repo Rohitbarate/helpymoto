@@ -17,7 +17,7 @@ const Profile = () => {
       const value = await AsyncStorage.getItem('@user_info');
       if (value !== null) {
         setUser(JSON.parse(value));
-        console.log(user);
+        console.log("rohit: "+user.isAllSet);
       }
     } catch (e) {
       // error reading value
@@ -43,10 +43,10 @@ const Profile = () => {
               marginTop: 2,
               letterSpacing: 1,
             }}>
-            {user.displayName || 'Rohit Barate'}
+            {user.value.displayName || 'Rohit Barate'}
           </Text>
           <Text style={{fontSize: 14, color: '#000', marginTop: 2}}>
-            {user.phoneNumber}
+            {user.value.phoneNumber}
           </Text>
           <Text style={{fontSize: 14, color: '#000', marginTop: 2}}>
             {user.email || 'rohitbarate100@gmail.com'}{' '}

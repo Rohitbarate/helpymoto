@@ -17,6 +17,13 @@ import CleaningServices from '../screens/serviceScreens/CleaningServices';
 import NearbyDrivers from '../screens/serviceScreens/NearbyDrivers';
 import TowingServices from '../screens/serviceScreens/TowingServices';
 import ServiceDetails from '../screens/serviceScreens/ServiceDetails';
+import Payment from '../screens/paymentScreens/Payment';
+import PaymentMethods from '../screens/paymentScreens/PaymentMethods';
+import CrDbCard from '../screens/paymentScreens/CrDbCard';
+import Upi from '../screens/paymentScreens/Upi';
+import NetBanking from '../screens/paymentScreens/NetBanking';
+import PayOnService from '../screens/paymentScreens/PayOnService';
+
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
@@ -57,18 +64,17 @@ const HomeStack = () => {
             />
           </TouchableOpacity>
         ),
-       
       }}>
-      <Stack.Screen 
-      name="home" 
-      component={Home}
-      options={{
-        headerLeft: () => (
-          <TouchableOpacity>
-           <Icon name='bars' size={24}  color="#fff" />
-          </TouchableOpacity>
-        ),
-      }}
+      <Stack.Screen
+        name="home"
+        component={Home}
+        options={{
+          headerLeft: () => (
+            <TouchableOpacity>
+              <Icon name="bars" size={24} color="#fff" />
+            </TouchableOpacity>
+          ),
+        }}
       />
       <Stack.Screen name="Hire Driver" component={HireDriver} />
       <Stack.Screen
@@ -107,6 +113,32 @@ const HomeStack = () => {
           },
         })}
       />
+      <Stack.Screen
+        name="Payment"
+        component={Payment}
+        options={{
+          headerShown: true,
+          headerTitle: 'Payment',
+          headerTitleStyle: {
+            fontWeight: '900',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Payment Methods"
+        component={PaymentMethods}
+        options={{
+          headerShown: true,
+          headerTitle: 'Payment Methods',
+          headerTitleStyle: {
+            fontWeight: '900',
+          },
+        }}
+      />
+      <Stack.Screen name="credit/debit card" component={CrDbCard} />
+      <Stack.Screen name="UPI" component={Upi} />
+      <Stack.Screen name="Net Banking" component={NetBanking} />
+      <Stack.Screen name="Pay On Service" component={PayOnService} />
     </Stack.Navigator>
   );
 };

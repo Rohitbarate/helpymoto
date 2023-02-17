@@ -7,178 +7,237 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Image,
+  Alert,
+  ActivityIndicator,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import auth from '@react-native-firebase/auth';
 
 
 const Signup = ({navigation}) => {
-  const [actCreated, setActCreated] = useState(false);
+  const [mobNo, setMobNo] = useState('');
+  const [otp, setOtp] = useState('');
+  const [confirm, setConfirm] = useState(null);
+  const [loading, setLoading] = useState(false);
+ 
+  
 
-  const SelectCar = () => {
-    return (
-      <View style={[styles.container, {paddingTop: 20}]}>
-        <Text style={styles.HEADER}>Select your vehicle </Text>
-        <View style={[styles.form, {marginTop: 0, paddingHorizontal: 20}]}>
-          <Text
-            style={{alignSelf: 'flex-start', fontWeight: '800', marginTop: 10}}>
-            Vehicle maker :{' '}
-          </Text>
-          <TextInput
-            style={[styles.input, {width: '100%'}]}
-            // onChangeText={onChangeNumber}
-            // value=""
-            placeholder="car maker e.g. Maruti suzuki"
-            keyboardType="default"
-          />
-          <Text
-            style={{alignSelf: 'flex-start', fontWeight: '800', marginTop: 10}}>
-            Vehicle model :{' '}
-          </Text>
-          <TextInput
-            style={[styles.input, {width: '100%'}]}
-            // onChangeText={onChangeNumber}
-            // value=""
-            placeholder="car maker e.g. Alto"
-            keyboardType="default"
-          />
-          <TouchableOpacity
-            style={[styles.btn, {width: '100%'}]}
-            onPress={() => navigation.replace('Home')}>
-            <Text style={styles.btnText}>Add Car</Text>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            width: '100%',
-            marginTop: 10,
-            height: 1,
-            backgroundColor: '#5d5fef',
-          }}
-        />
-        <ScrollView keyboardShouldPersistTaps="handled">
-          <Text style={{fontStyle: 'italic', color: '#ff0212'}}>
-            *select vehicle from below list
-          </Text>
-        </ScrollView>
-      </View>
-    );
+  // useEffect(() => {
+  //  if(authenticated){
+  //   navigation.replace('Home',{
+  //     loggedUser:loggedUser
+  //   })
+  //  }
+  // }, [authenticated])
+  
+
+  const SignupWithOtp = async number => {
+    setLoading(true);
+    try {
+      const cnfm = await auth().signInWithPhoneNumber(number);
+      setConfirm(cnfm);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+   
   };
 
-  // root component
+  async function confirmCode(otp) {
+    setLoading(true)
+    try {
+      await confirm.confirm(otp);
+      Alert.alert('Signup successfully');
+      setConfirm(null)
+    } catch (error) {
+      console.log('Invalid code.' + error);
+    }
+    setLoading(false);
+  }
+
 
   return (
     <KeyboardAvoidingView style={{flex: 1, backgroundColor: '#fff'}}>
-      {actCreated ? (
-        <SelectCar />
-      ) : (
-        <ScrollView
-          contentContainerStyle={styles.container}
-          keyboardShouldPersistTaps="handled">
-          <View style={styles.bannerView}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled">
+        <View style={styles.bannerView}>
           <Image
             style={styles.banner}
             source={require('../../assets/images/icon.png')}
           />
-          </View>
-          <Text style={styles.HEADER}>Welcome</Text>
+        </View>
+        <Text style={styles.HEADER}>Welcome</Text>
+        {/* <View > */}
+        {!confirm && (
           <View style={styles.form}>
             <TextInput
               style={styles.input}
-              // onChangeText={onChangeNumber}
-              value=""
-              placeholder="full name"
-            />
-            <TextInput
-              style={styles.input}
-              // onChangeText={onChangeNumber}
-              value=""
-              placeholder="phone number"
+              onChangeText={text => setMobNo(text)}
+              value={mobNo}
+              placeholder="Enter Your Phone Number"
               keyboardType="numeric"
-            />
-            <TextInput
-              style={styles.input}
-              // onChangeText={onChangeNumber}
-              value=""
-              placeholder="email"
-            />
-            <Text style={{fontStyle: 'italic'}}>
-              *Password must contain at least 8 characters.
-            </Text>
-            <TextInput
-              style={styles.input}
-              // onChangeText={onChangeNumber}
-              // value=""
-              placeholder="password" 
-              secureTextEntry={true}
-            />
-              <TouchableOpacity
-          style={{
-            alignSelf: 'flex-end',
-
-          }}
-          >
-          <Text
-            style={{
-              color: '#5d5fefd4',
-              fontWeight: '900',
-              letterSpacing: 1,
-              marginBottom: 10,
-            }}>
-            forgot password
-          </Text>
-          </TouchableOpacity>
-            <TextInput
-              style={styles.input}
-              // onChangeText={onChangeNumber}
-              value=""
-              placeholder="confirm password"
+              placeholderTextColor="grey"
+              maxLength={10}
+              
             />
 
             <TouchableOpacity
-              style={styles.btn}
-              onPress={() => setActCreated(true)}>
-              <Text style={styles.btnText}>Sign Up</Text>
+              disabled={mobNo.length == 10 ? false : true}
+              style={[
+                styles.btn,
+                {
+                  backgroundColor: mobNo.length < 10 ? 'grey' : '#5D5FEF',
+                },
+              ]}
+              onPress={() => SignupWithOtp('+91' + mobNo)}>
+              {loading ? (
+                <ActivityIndicator color="#ffffff" size={34} />
+              ) : (
+                <Text style={styles.btnText}>Send Otp</Text>
+              )}
             </TouchableOpacity>
           </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              marginTop: 10,
-            }}>
-            <Text style={{textAlign: 'center', fontSize: 15, color: '#000'}}>
-              Already have an account ?{' '}
-            </Text>
-            <TouchableOpacity
-              style={{alignItems: 'center'}}
-              onPress={() => navigation.replace('login')}>
-              <Text style={{color: '#5D5FEF', fontWeight: '900', fontSize: 16}}>
-                Login
+        )}
+
+        {confirm && (
+          <View style={styles.form}>
+            <View style={[styles.row, {marginBottom: 10}]}>
+              <Text
+                style={{
+                  color: 'grey',
+                  fontSize: 19,
+                  alignSelf: 'flex-start',
+                  fontWeight: '900',
+                }}>
+                +91 {mobNo}
               </Text>
+              {/* <TouchableOpacity
+                disabled={mobNo.length == 10 ? false : true}
+                style={{
+                  backgroundColor: '#5D5FEF',
+                  height: 25,
+                  borderRadius: 12,
+                  paddingHorizontal: 7,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: 5,
+                }}
+                onPress={() => {
+                  setConfirm(null);
+                  setOtp('');
+                  setLoading(false)
+                }}>
+                <Text style={{color: '#fff', fontSize: 12, fontWeight: '900'}}>
+                  Change Number
+                </Text>
+              </TouchableOpacity> */}
+              <TouchableOpacity
+                disabled={mobNo.length == 10 ? false : true}
+                style={{
+                  backgroundColor: '#5D5FEF',
+                  height: 25,
+                  borderRadius: 12,
+                  paddingHorizontal: 7,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginLeft: 5,
+                }}
+                onPress={() =>{ SignupWithOtp('+91' + mobNo);setOtp('');}}>
+                <Text style={{color: '#fff', fontSize: 12, fontWeight: '900'}}>
+                  Resend Otp
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setOtp(text)}
+              value={otp}
+              placeholder=" Enter Otp"
+              placeholderTextColor="grey"
+              keyboardType="number-pad"
+            />
+            <TouchableOpacity
+              disabled={mobNo.length == 10 ? false : true}
+              style={[
+                styles.btn,
+                {
+                  backgroundColor: otp.length < 6 ? 'grey' : '#5D5FEF',
+                },
+              ]}
+              onPress={() => confirmCode(otp)}>
+               {loading ? (
+                <ActivityIndicator color="#ffffff" size={34}/>
+              ) : (
+                <Text style={styles.btnText}>Verify Otp</Text>
+              )}
             </TouchableOpacity>
           </View>
-          <View
-        style={styles.col}
-        >
-          <Text style={{fontSize:16,color:'grey',marginVertical:20}}>OR</Text>
-          <View
-          style={styles.row}
-          >
+        )}
+        {/* </View> */}
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: 10,
+          }}>
+          <Text style={{textAlign: 'center', fontSize: 15, color: '#000'}}>
+            Already have an account?{' '}
+          </Text>
+          <TouchableOpacity
+            style={{alignItems: 'center'}}
+            onPress={() => navigation.replace('login')}>
+            <Text style={{color: '#5D5FEF', fontWeight: '900', fontSize: 16}}>
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.col}>
+          <Text style={{fontSize: 16, color: 'grey', marginVertical: 20}}>
+            OR
+          </Text>
+          <View style={styles.row}>
             <TouchableOpacity style={styles.icon}>
-            <Icon name='google' size={28} color="#5D5FEF"/>
+              <Icon name="google" size={28} color="#5D5FEF" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.icon}>
-            <Icon name="facebook" size={28} color="#5D5FEF" />
+              <Icon name="facebook" size={28} color="#5D5FEF" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.icon}>
-            <Icon name="twitter" size={28} color="#5D5FEF" />
+              <Icon name="twitter" size={28} color="#5D5FEF" />
             </TouchableOpacity>
           </View>
         </View>
-        </ScrollView>
-      )}
+      </ScrollView>
+     { confirm && <View style={styles.infoBar}>
+      <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}} >
+     <ActivityIndicator
+        size={24}
+        color={'#15ff00'}
+        hidesWhenStopped
+
+      />
+        <Text style={{color:'#fff',fontSize:14,fontWeight:'500',marginLeft:5}} >
+        
+          Auto Verifying, {mobNo}</Text>
+          </View>
+        <TouchableOpacity
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={() => {
+                  setConfirm(null);
+                  setOtp('');
+                  setLoading(false)
+                }}>
+                <Text style={{color: '#15ff00', fontSize: 15, fontWeight: '900'}}>
+                  EDIT PHONE
+                </Text>
+              </TouchableOpacity>
+      </View>}
     </KeyboardAvoidingView>
   );
 };
@@ -190,23 +249,20 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    padding: 16,
     backgroundColor: '#fff',
-    paddingBottom: 20,
-  },
-  bannerView: {
-    marginVertical: 10,
+    width: '100%',
   },
   banner: {
     height: 200,
-    width:150,
-    marginBottom:20
+    width: 150,
+    marginBottom: 20,
   },
   HEADER: {
     fontSize: 24,
     fontWeight: '900',
     color: '#5D5FEF',
-    marginBottom: 20,
+    marginBottom: 5,
     alignSelf: 'flex-start',
   },
   form: {
@@ -215,20 +271,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     marginVertical: 10,
+    paddingHorizontal: 10,
   },
   input: {
     height: 50,
-    width: '90%',
+    width: '100%',
     marginVertical: 12,
     borderWidth: 1,
     padding: 10,
     borderColor: '#5D5FEF',
     borderRadius: 10,
+    color: '#000000',
+    fontWeight: 'bold',
+    letterSpacing: 1,
+    fontSize: 18,
   },
   btn: {
     width: '90%',
     height: 50,
-    backgroundColor: '#5D5FEF',
     marginTop: 20,
     borderRadius: 10,
     alignItems: 'center',
@@ -239,33 +299,40 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '900',
   },
-  col:{
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center',
-    justifyContent:'space-around',
-    width:'100%'
-
+  col: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '100%',
   },
-  row:{
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'nowrap',
+    width: '100%',
+  },
+  icon: {
+    borderColor: '#5D5FEF',
+    borderWidth: 1,
+    padding: 5,
+    borderRadius: 27,
+    height: 40,
+    width: 40,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 15,
+  },
+  infoBar:{
+    width:'100%',
     display:'flex',
     flexDirection:'row',
     alignItems:'center',
-    justifyContent:'center',
-    flexWrap:'nowrap',
-    width:'100%',
-    
-  },
-  icon:{
-    borderColor:"#5D5FEF",
-    borderWidth:1,
-    padding:5,
-    borderRadius:27,
-    height:40,
-    width:40,
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
-    marginHorizontal:15
+    justifyContent:'space-around',
+    height:50,
+    backgroundColor:'#5D5FEF'
   }
 });
