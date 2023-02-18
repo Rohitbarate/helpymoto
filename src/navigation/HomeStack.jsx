@@ -33,6 +33,10 @@ const HomeStack = () => {
     <Stack.Navigator
       initialRouteName="home"
       screenOptions={{
+        presentation:'modal',
+        animation:'slide_from_right',
+        animationDuration:150,
+        animationTypeForReplace:'push',
         headerTintColor: '#fff',
         headerTitleAlign: 'center',
         headerTitleStyle: {fontSize: 16, fontWeight: '600'},
@@ -100,7 +104,11 @@ const HomeStack = () => {
           ),
         })}
       />
-      <Stack.Screen name="Cleaning Services" component={CleaningServices} />
+      <Stack.Screen name="Cleaning Services" component={CleaningServices}
+      options={{
+        animation:'slide_from_bottom'
+      }}
+      />
       <Stack.Screen name="Towing Service" component={TowingServices} />
       <Stack.Screen
         name="ServiceDetails"
@@ -111,6 +119,7 @@ const HomeStack = () => {
           headerTitleStyle: {
             fontWeight: '900',
           },
+          animation:"simple_push",
         })}
       />
       <Stack.Screen
@@ -135,10 +144,34 @@ const HomeStack = () => {
           },
         }}
       />
-      <Stack.Screen name="credit/debit card" component={CrDbCard} />
-      <Stack.Screen name="UPI" component={Upi} />
-      <Stack.Screen name="Net Banking" component={NetBanking} />
-      <Stack.Screen name="Pay On Service" component={PayOnService} />
+      <Stack.Screen name="credit/debit card" component={CrDbCard}  options={{
+          headerShown: true,
+          headerTitle: 'credit/debit card',
+          headerTitleStyle: {
+            fontWeight: '900',
+          },
+        }} />
+      <Stack.Screen name="UPI" component={Upi}  options={{
+          headerShown: true,
+          headerTitle: 'UPI',
+          headerTitleStyle: {
+            fontWeight: '900',
+          },
+        }} />
+      <Stack.Screen name="Net Banking" component={NetBanking}  options={{
+          headerShown: true,
+          headerTitle: 'Net Banking',
+          headerTitleStyle: {
+            fontWeight: '900',
+          },
+        }} />
+      <Stack.Screen name="Pay On Service" component={PayOnService}  options={{
+          headerShown: true,
+          headerTitle: 'Pay On Service',
+          headerTitleStyle: {
+            fontWeight: '900',
+          },
+        }} />
     </Stack.Navigator>
   );
 };

@@ -75,7 +75,7 @@ const PaymentMethods = ({navigation, route}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.options}
-          onPress={() => navigation.navigate('UPI')}>
+          onPress={() => navigation.navigate('UPI',{totalBill})}>
           <Text style={styles.optionText}>UPI</Text>
           <Icon
             name="right"
@@ -86,7 +86,7 @@ const PaymentMethods = ({navigation, route}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.options}
-          onPress={() => navigation.navigate('Net Banking')}>
+          onPress={() => navigation.navigate('Net Banking',{totalBill})}>
           <Text style={styles.optionText}>Net Banking</Text>
           <Icon
             name="right"

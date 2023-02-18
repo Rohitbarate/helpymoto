@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View,Image,TouchableOpacity} from 'react-native'
 import React,{ useState} from 'react'
+import TotalPriceView from '../../components/atoms/TotalPriceView';
 // import Recaptcha from 'react-native-recaptcha-that-works';
 // import CheckBox from '@react-native-community/checkbox';
 // import Icon from 'react-native-vector-icons/AntDesign'
@@ -11,10 +12,9 @@ const PayOnService = ({navigation,route}) => {
 
   return (
     <View>
-        <View style={styles.cont}>
-            <Text style={styles.totp}>Total Price</Text>
-            <Text style={styles.rupee}>&#8377;{totalBill}</Text>
-        </View>
+       <TotalPriceView 
+          totalBill={totalBill}
+          />
         <View style={styles.secCont}>
             <Text style={styles.payonService}>Pay on Service (Cash/Card/UPI)</Text>
             <View style={styles.col}>
