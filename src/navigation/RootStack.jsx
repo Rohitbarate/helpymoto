@@ -17,11 +17,6 @@ const RootStack = () => {
         tabBarActiveTintColor: '#5D5FEF',
         tabBarInactiveTintColor: '#000000',
         headerShown: false,
-        headerLeft: () => (
-          <TouchableOpacity>
-           <Icon name='bars' size={24}  color="#fff" />
-          </TouchableOpacity>
-        ),
       }}
       >
       <Tab.Screen
@@ -32,12 +27,24 @@ const RootStack = () => {
           tabBarIcon: ({color, size}) => (
             <Icon name="home" color={color} size={size} />
           ),
+          headerLeft: () => (
+            <TouchableOpacity>
+             <Icon name='bars' size={24}  color="#fff" />
+            </TouchableOpacity>
+          ),
+
         }}
       />
       <Tab.Screen
         name="BookingsStack"
         component={BookingStack}
         options={{
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {fontSize: 20, fontWeight: '600'},
+          headerStyle: {backgroundColor: '#5D5FEF'},
+          headerShown: true,
+          title:'Your Bookings',
           tabBarLabel: 'Bookings',
           tabBarIcon: ({color, size}) => (
             <Icon name="list-alt" color={color} size={size} />
@@ -61,6 +68,11 @@ const RootStack = () => {
           tabBarLabel: 'User',
           tabBarIcon: ({color, size}) => (
             <Icon name="user-circle" color={color} size={size} />
+          ),
+          headerLeft: () => (
+            <TouchableOpacity>
+             <Icon name='bars' size={24}  color="#fff" />
+            </TouchableOpacity>
           ),
         }}
       />
