@@ -5,8 +5,12 @@ import { color } from 'react-native-elements/dist/helpers'
 const ConfirmPayment = (navigation,route) => {
   return (
     <View style={[styles.col,styles.bgColor,{flex:1}]}>
-      <Image source={require('../images/confirmPayment.png')} style={styles.img} />
-      <Text style={[styles.txt,styles.txtStyle]}>Thank you, Your Service is placed!</Text>
+      <Image source={require('../../assets/images/pay-success.png')} style={styles.img} />
+      <View>
+      <Text style={[styles.txt,styles.txtStyle]}>Thank you,</Text>
+      <Text style={[styles.txt,styles.txtStyle]}>Your Service is placed!</Text>
+      </View>
+     
       <TouchableOpacity style={styles.msbtn}>
         <Text style={[styles.txt,{color:'white'}]}>View or Manage Service</Text>
       </TouchableOpacity>
@@ -21,10 +25,8 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
   },
   txtStyle:{
-    paddingHorizontal:124,
     fontWeight:'bold',
-    fontSize:18,
-    lineHeight:25,
+    fontSize:22,
     textAlign:'center'
   },
   msbtn:{
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
     },
     img:{
-      width:300,
-      height:350
+      width:250,
+      height:250,
     }
 })

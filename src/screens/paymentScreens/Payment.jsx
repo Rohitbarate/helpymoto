@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
+import RazorpayCheckout from 'react-native-razorpay';
 // import Icon from 'react-native-vector-icons/AntDesign'
 
 const Payment = ({route, navigation}) => {
@@ -15,13 +16,43 @@ const Payment = ({route, navigation}) => {
   // const [bill2,setBill2]=useState(180);
   const {serviceName, price} = route.params;
   const [servBill, setservBill] = useState(price);
-  const [gst, setGst] = useState((price/100)*28);
+  const [gst, setGst] = useState((price / 100) * 28);
   const [totalBill, setTotabBill] = useState(servBill + gst);
+
+  const payWithRazorpay = () => {
+    var options = {
+      description: 'Credits towards consultation',
+      image: require('../../assets/images/icon.png'),
+      currency: 'INR',
+      key: 'rzp_test_KlROBu52wxMSO1',
+      amount: `${totalBill*100}`,
+      name: 'Acme Corp',
+      order_id: '',
+      prefill: {
+        email: 'gaurav.kumar@example.com',
+        contact: '9191919191',
+        name: 'Gaurav Kumar',
+      },
+      theme: {color: '#5D5FEF'},
+    };
+    RazorpayCheckout.open(options)
+      .then(data => {
+        // handle success
+        navigation.replace('confirm payment')
+      })
+      .catch(error => {
+        // handle failure
+        alert(`Error: ${error.code} | ${error.description}`);
+      });
+  };
 
   return (
     <ScrollView>
       <View>
-          <Image  style={styles.image} source={require('../../assets/images/payment.png')}/>
+        <Image
+          style={styles.image}
+          source={require('../../assets/images/payment.png')}
+        />
         <View style={styles.col}>
           {/* <View style={styles.row}>
         <Text style={styles.innerchargesec}>Service Charges</Text>
@@ -32,11 +63,13 @@ const Payment = ({route, navigation}) => {
         <Text style={styles.rupees} t>&#8377;{bill2}</Text>
         </View> */}
           <View style={styles.row}>
-            <Text style={styles.innerchargesec}>{serviceName}</Text>
+            <Text style={styles.innerchargesec}>{serviceName || 'Service Charge'}</Text>
             <Text style={styles.rupees}>&#8377;{price}</Text>
           </View>
           <View style={styles.row}>
-            <Text style={styles.innerchargesec}>GST <Text style={{color:'grey'}} >(28%)</Text> </Text>
+            <Text style={styles.innerchargesec}>
+              GST <Text style={{color: 'grey'}}>(28%)</Text>{' '}
+            </Text>
             <Text style={styles.rupees}>&#8377;{gst}</Text>
           </View>
           <View style={styles.hr} />
@@ -45,9 +78,7 @@ const Payment = ({route, navigation}) => {
             <Text style={styles.rupees}>&#8377;{totalBill}</Text>
           </View>
         </View>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => navigation.navigate('Payment Methods', {totalBill})}>
+        <TouchableOpacity style={styles.btn} onPress={() => payWithRazorpay()}>
           <Text style={styles.btnText}>Proceed</Text>
         </TouchableOpacity>
       </View>
@@ -60,9 +91,9 @@ export default Payment;
 const styles = StyleSheet.create({
   image: {
     // width: 50,
-    aspectRatio:1,
+    aspectRatio: 1,
     height: 200,
-    alignSelf:'center'
+    alignSelf: 'center',
   },
   imgCont: {
     display: 'flex',

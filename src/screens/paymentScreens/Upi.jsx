@@ -14,9 +14,8 @@ import React, {useState} from 'react';
 import TotalPriceView from '../../components/atoms/TotalPriceView';
 // import CheckBox from '@react-native-community/checkbox';
 
-const phonePeUrl = 'tel:+917972755589';
-const gPayUrl = '';
-const paytmUrl = '';
+
+
 
 const Upi = ({navigation, route}) => {
   const {totalBill} = route.params;
@@ -102,7 +101,9 @@ const Upi = ({navigation, route}) => {
         </View>
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => navigation.navigate('ConfirmPayment', {totalBill})}>
+          onPress={() => {
+            
+        }}>
           <Text style={styles.btnText}>Pay Now</Text>
         </TouchableOpacity>
       </View>

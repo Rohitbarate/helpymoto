@@ -44,9 +44,8 @@ const ServiceView = ({item}) => {
         <Image style={styles.serviceImg} source={item.img} />
         <TouchableOpacity 
         style={styles.button}
-        onPress={() =>navigation.navigate("ServiceDetails", {
-            item: item,
-          })}
+        onPress={()=>navigation.navigate('Payment',
+        {serviceName:item.serviceName,price:item.offerPrice})}
         >
           <Text
             style={{
@@ -100,7 +99,7 @@ const ServiceView = ({item}) => {
                 lineHeight:22
               }}
             >
-              &#8377;{item.newPrice}.00
+              &#8377;{item.offerPrice}.00
             </Text>
           </View>
         </View>

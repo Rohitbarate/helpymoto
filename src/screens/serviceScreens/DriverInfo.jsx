@@ -91,7 +91,8 @@ const DriverInfo = ({ route, navigation }) => {
           horizontal={true}
         />
       </View>
-      <TouchableOpacity onPress={() => {}} style={styles.BTN}>
+      <TouchableOpacity onPress={() =>navigation.navigate('Payment',
+          {price:driver.charge})} style={styles.BTN}>
         <Text style={styles.btnText}>Hire Now</Text>
       </TouchableOpacity>
     </ScrollView>

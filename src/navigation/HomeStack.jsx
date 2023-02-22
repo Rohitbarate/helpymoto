@@ -25,6 +25,7 @@ import NetBanking from '../screens/paymentScreens/NetBanking';
 import PayOnService from '../screens/paymentScreens/PayOnService';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ConfirmPayment from '../screens/paymentScreens/ConfirmPayment';
 
 const Stack = createNativeStackNavigator();
 
@@ -171,6 +172,9 @@ const HomeStack = () => {
           headerTitleStyle: {
             fontWeight: '900',
           },
+        }} />
+      <Stack.Screen name="confirm payment" component={ConfirmPayment}  options={{
+          headerShown: false,
         }} />
     </Stack.Navigator>
   );
