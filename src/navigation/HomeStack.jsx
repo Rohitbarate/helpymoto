@@ -26,14 +26,17 @@ import PayOnService from '../screens/paymentScreens/PayOnService';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ConfirmPayment from '../screens/paymentScreens/ConfirmPayment';
+import { useNavigation } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
 const HomeStack = () => {
+  const navigation = useNavigation();
+
   return (
     <Stack.Navigator
       initialRouteName="home"
-      screenOptions={{
+      screenOptions={({navigation})=>({
         presentation:'modal',
         animation:'slide_from_right',
         animationDuration:150,
@@ -62,14 +65,16 @@ const HomeStack = () => {
           </View>
         ),
         headerRight: () => (
-          <TouchableOpacity>
+          <TouchableOpacity
+           onPress={()=>navigation.navigate('profile')}
+          >
             <Image
               style={{height: 40, aspectRatio: 1, borderRadius: 20}}
               source={require('../assets/images/user.png')}
             />
           </TouchableOpacity>
         ),
-      }}>
+      })}>
       <Stack.Screen
         name="home"
         component={Home}

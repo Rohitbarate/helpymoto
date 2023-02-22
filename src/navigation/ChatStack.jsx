@@ -6,7 +6,9 @@ const ChatStack = () => {
   return (
     <WebView
       source={{uri: 'https://rohitbarate.github.io/portfoliowebsite-react/'}}
-      allowsBackForwardNavigationGestures
+      allowsBackForwardNavigationGestures="true"
+      bounces="true"
+      
     />
   );
 };

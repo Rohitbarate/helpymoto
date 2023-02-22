@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, Button, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 const BookingView = ({item}) => {
@@ -10,12 +10,29 @@ const BookingView = ({item}) => {
         </View>
         <View style={styles.nameCont}>
           <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.date}>10 Nov , 2022</Text>
+          <Text style={styles.date}>{item.createdTime}</Text>
           <Text style={styles.time}>2 hr 30 min</Text>
         </View>
         <View style={styles.lastCont}>
           <Text style={styles.charge}>&#8377;{item.bill}</Text>
-          <Text style={{color:item.status=='completed'?'#4BB543':'#BA1C1C'}}>{item.status}</Text>
+         { item.status=='pending'?(
+           <TouchableOpacity
+           onPress={()=>{}}
+            style={styles.button}
+            >
+             <Text
+               style={{
+                 fontSize: 14,
+                 lineHeight: 20,
+                 paddingHorizontal: 24,
+                 paddingVertical: 4,
+                 color: "#fff",
+               }}
+             >
+               track
+             </Text>
+           </TouchableOpacity>
+         ):(<Text style={{color:item.status=='completed'?'#4BB543':'#BA1C1C'}}>{item.status}</Text>)}
         </View>
       </View>
     </View>
@@ -70,5 +87,12 @@ const styles = StyleSheet.create({
     height: 60,
     width: 60,
     borderRadius: 50,
+  },
+  button: {
+    backgroundColor: "#5D5FEF",
+    borderRadius: 4,
+    textAlign:'center',
+    alignItems:'center',
+    justifyContent:'center'
   },
 });

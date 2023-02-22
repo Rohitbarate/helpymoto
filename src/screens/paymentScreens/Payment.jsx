@@ -40,9 +40,9 @@ const Payment = ({route, navigation}) => {
         // handle success
         navigation.replace('confirm payment')
       })
-      .catch(error => {
+      .catch(({error}) => {
         // handle failure
-        alert(`Error: ${error.code} | ${error.description}`);
+        alert(`${error.description} `);
       });
   };
 
