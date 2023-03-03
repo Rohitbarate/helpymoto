@@ -253,9 +253,14 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-    // implementation project(':react-native-razorpay')
+     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0' 
 
-    implementation platform('com.google.firebase:firebase-bom:31.2.0')
+    // implementation project(':react-native-razorpay')
+    implementation platform('com.google.firebase:firebase-bom:31.2.2')
+
+    implementation 'com.google.firebase:firebase-auth'
+
+     implementation 'com.google.android.gms:play-services-auth:20.4.1'
 
     implementation 'com.google.firebase:firebase-analytics'
     //noinspection GradleDynamicVersion

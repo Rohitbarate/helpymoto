@@ -355,38 +355,44 @@ const profileOptions = [
     id: 1,
     option: 'My Account',
     co_options: 'Favourites, Offers & Settings',
+    navigator:'My Account'
   },
   {
     id: 2,
     option: 'Addresses',
     co_options: 'Share, Edit & Add New Addressess',
+    navigator:'My Account'
   },
   {
     id: 3,
     option: 'My Orders',
     co_options: 'View All Orders and  History',
+    navigator:'Bookings'
   },
   {
     id: 4,
     option: 'HM Store Money',
     co_options: 'View Account Balance & Transaction History',
+    navigator:'My Account'
   },
   {
     id: 5,
     option: 'Payments And Refunds',
     co_options: 'Refunds Status & Payments Modes',
+    navigator:'My Account'
   },
   {
     id: 6,
     option: 'Help',
     co_options: 'FAQs & Links',
+    navigator:'Help Center'
   },
 ];
 
 const bookings = [
   {
     name: 'John Doe',
-    bookingId:15014520,
+    bookingId: 15014520,
     serProvId: 2567890,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -396,7 +402,7 @@ const bookings = [
   },
   {
     name: 'Guy Hawkins',
-    bookingId:15014529,
+    bookingId: 15014529,
     serProvId: 2567891,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -407,7 +413,7 @@ const bookings = [
   },
   {
     name: 'Arlene McCoy',
-    bookingId:15014528,
+    bookingId: 15014528,
     serProvId: 2567892,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -417,7 +423,7 @@ const bookings = [
   },
   {
     name: 'Marvin McKinney',
-    bookingId:15014527,
+    bookingId: 15014527,
     serProvId: 2567893,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -427,7 +433,7 @@ const bookings = [
   },
   {
     name: 'Albert Flores',
-    bookingId:15014526,
+    bookingId: 15014526,
     serProvId: 2567894,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -437,7 +443,7 @@ const bookings = [
   },
   {
     name: 'Kartik Murphy',
-    bookingId:15014524,
+    bookingId: 15014524,
     serProvId: 2567895,
     distance: 1.8,
     img: require('../../assets/images/user.png'),
@@ -448,7 +454,7 @@ const bookings = [
   },
   {
     name: 'Leslie Alexander',
-    bookingId:15014522,
+    bookingId: 15014522,
     serProvId: 2567896,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -458,7 +464,7 @@ const bookings = [
   },
   {
     name: 'Santosh Kumar',
-    bookingId:15014525,
+    bookingId: 15014525,
     serProvId: 2567897,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -468,7 +474,7 @@ const bookings = [
   },
   {
     name: 'Brock Siman',
-    bookingId:1501452,
+    bookingId: 1501452,
     serProvId: 2567898,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -478,7 +484,7 @@ const bookings = [
   },
   {
     name: 'John Sina',
-    bookingId:150145225,
+    bookingId: 150145225,
     serProvId: 2567899,
     img: require('../../assets/images/user.png'),
     bill: 1200,
@@ -498,3 +504,41 @@ export {
   profileOptions,
   bookings,
 };
+
+// {
+//   "displayName": null,
+//   "email": null,
+//   "emailVerified": false,
+//   "isAnonymous": false,
+//   "metadata": {
+//       "creationTime": 1675364600571,
+//       "lastSignInTime": 1677332057215
+//   },
+//   "multiFactor": {
+//       "enrolledFactors": ""
+//   },
+//   "phoneNumber": "+919021474229",
+//   "photoURL": null,
+//   "providerData": "[[Object]]",
+//   "providerId": "firebase",
+//   "tenantId": null,
+//   "uid": "43EUC5vOHRc2NeIBlDZAYzQ7Use2"
+// }
+
+// redux user schema
+
+// const user = {
+//   email: 'rohitbarate100@gmail.com',
+//   mobNo: 9822544067,
+//   name: 'Rohit Barate',
+//   password: 'Rohit@1112',
+//   photo: '',
+//   vehicle: {
+//     bYear: 2022,
+//     cNumber: '540804565804',
+//     cylenderNo: 6,
+//     name: 'porsche 911',
+//     number: 'MH 12 RB 02',
+//   },
+// };
+// 

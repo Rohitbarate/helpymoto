@@ -32,7 +32,10 @@ const BookingView = ({item}) => {
                track
              </Text>
            </TouchableOpacity>
-         ):(<Text style={{color:item.status=='completed'?'#4BB543':'#BA1C1C'}}>{item.status}</Text>)}
+         ):
+         (
+         <Text style={{color:item.status=='completed'?'#4BB543':'#BA1C1C'}}>{item.status}</Text>
+         )}
         </View>
       </View>
     </View>

@@ -6,7 +6,7 @@ import BookingView from '../../components/molecules/BookingView'
 const AllBookings = () => {
     return (
         <ScrollView style={{backgroundColor:'#fff'}} >
-        {bookings.map(item => (
+        {bookings.map((item) => (
           <BookingView item={item} key={item.bookingId} />
         ))}
       </ScrollView>

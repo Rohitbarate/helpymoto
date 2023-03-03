@@ -25,8 +25,6 @@ const Login = ({navigation}) => {
  
   
 
-  
-
   const loginWithOtp = async number => {
     setLoading(true);
     try {

@@ -36,79 +36,75 @@ const HomeStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="home"
-      screenOptions={({navigation})=>({
-        presentation:'modal',
-        animation:'slide_from_right',
-        animationDuration:150,
-        animationTypeForReplace:'push',
-        headerTintColor: '#fff',
-        headerTitleAlign: 'center',
-        headerTitleStyle: {fontSize: 16, fontWeight: '600'},
-        headerStyle: {backgroundColor: '#5D5FEF'},
-        headerTitle: () => (
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-            <Location name="location" size={24} color="#fff" />
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                marginLeft: 10,
-              }}>
-              <Text style={[styles.txt, {fontSize: 16}]}>Delhi </Text>
-              <Text style={styles.txt}>Change location</Text>
-            </View>
-          </View>
-        ),
-        headerRight: () => (
-          <TouchableOpacity
-           onPress={()=>navigation.navigate('profile')}
-          >
-            <Image
-              style={{height: 40, aspectRatio: 1, borderRadius: 20}}
-              source={require('../assets/images/user.png')}
-            />
-          </TouchableOpacity>
-        ),
-      })}>
+      screenOptions={{headerShown:false}}
+      // screenOptions={({navigation})=>({
+      //   presentation:'modal',
+      //   animation:'slide_from_right',
+      //   animationDuration:150,
+      //   animationTypeForReplace:'push',
+      //   headerTintColor: '#fff',
+      //   headerTitleAlign: 'center',
+      //   headerTitleStyle: {fontSize: 16, fontWeight: '600'},
+      //   headerStyle: {backgroundColor: '#5D5FEF'},
+      //   headerTitle: () => (
+      //     <View
+      //       style={{
+      //         display: 'flex',
+      //         flexDirection: 'row',
+      //         alignItems: 'center',
+      //       }}>
+      //       <Location name="location" size={24} color="#fff" />
+      //       <View
+      //         style={{
+      //           display: 'flex',
+      //           flexDirection: 'column',
+      //           marginLeft: 10,
+      //         }}>
+      //         <Text style={[styles.txt, {fontSize: 16}]}>Delhi </Text>
+      //         <Text style={styles.txt}>Change location</Text>
+      //       </View>
+      //     </View>
+      //   ),
+      //   headerRight: () => (
+      //     <TouchableOpacity
+      //      onPress={()=>navigation.navigate('UserStack')}
+      //     >
+      //       <Image
+      //         style={{height: 40, aspectRatio: 1, borderRadius: 20}}
+      //         source={require('../assets/images/user.png')}
+      //       />
+      //     </TouchableOpacity>
+      //   ),
+      // })}
+      >
       <Stack.Screen
         name="home"
         component={Home}
-        options={{
-          headerLeft: () => (
-            <TouchableOpacity>
-              <Icon name="bars" size={24} color="#fff" />
-            </TouchableOpacity>
-          ),
-        }}
+        // options={({navigation})=>({
+        //   headerLeft: () => (
+        //     <TouchableOpacity 
+        //     onPress={()=>navigation.openDrawer()}
+        //      >
+        //       <Icon name="bars" size={24} color="#fff" />
+        //     </TouchableOpacity>
+        //   ),
+        // })}
       />
       <Stack.Screen name="Hire Driver" component={HireDriver} />
       <Stack.Screen
         name="Nearby Drivers"
         component={NearbyDrivers}
-        options={{
-          headerTitle: 'Available drivers',
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-        }}
+        // options={{
+        //   headerTitle: 'Available drivers',
+        //   headerTitleStyle: {
+        //     fontWeight: '900',
+        //   },
+        // }}
       />
       <Stack.Screen
         name="Driver"
         component={DriverInfo}
-        options={({route}) => ({
-          headerTitle: route.params.driver.name,
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-          headerRight: () => (
-            <HeartIcon name="heart-alt" size={24} color="#fff" />
-          ),
-        })}
+     
       />
       <Stack.Screen name="Cleaning Services" component={CleaningServices}
       options={{
@@ -139,7 +135,7 @@ const HomeStack = () => {
           },
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Payment Methods"
         component={PaymentMethods}
         options={{
@@ -149,7 +145,7 @@ const HomeStack = () => {
             fontWeight: '900',
           },
         }}
-      />
+      /> */}
       <Stack.Screen name="credit/debit card" component={CrDbCard}  options={{
           headerShown: true,
           headerTitle: 'credit/debit card',

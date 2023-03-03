@@ -10,103 +10,10 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const PaymentMethods = ({navigation, route}) => {
-  const {totalBill} = route.params;
-  const [selection, setSelection] = useState(false);
 
   return (
     <ScrollView>
-      <View style={styles.payMethods}>
-        <View style={styles.pmouter}>
-          {/* <Text style={styles.pm}>Payment Methods</Text> */}
-          <View style={styles.aviOffOut}>
-            <View style={styles.drow}>
-              <Image
-                source={require('../../assets/images/offer.png')}
-                style={styles.img}
-              />
-              <Text style={styles.aviOff}>Available Offers</Text>
-            </View>
-            <Text style={styles.offView}>
-              10% Instant Discount on STATE BANK OF INDIA Cards on a mini Spend
-              of &#8377; 2499. TCA
-            </Text>
-            {selection ? (
-              <Text style={styles.offView}>
-                8% Instant Discount on ICICI Debit Cards on a mini Spend of
-                &#8377; 2249. TCA
-              </Text>
-            ) : (
-              ''
-            )}
-
-            <TouchableOpacity
-              value={selection}
-              onPress={() => setSelection(!selection)}>
-
-              <View style={styles.darr}>
-                <Text style={styles.showmore}>
-                  {!selection ? 'Show more' : 'Show less'}
-                </Text>
-                <Icon
-                  name={!selection ? 'down' : 'up'}
-                  size={13}
-                  color={'blue'}
-                  style={styles.iconstyle}
-                />
-              </View>
-
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-
-      <View style={[styles.col, styles.pVer]}>
-        <Text style={[styles.pm, {marginBottom:10}]}>Choose other ways to Pay</Text>
-        <TouchableOpacity
-          style={styles.options}
-          onPress={() => navigation.navigate('credit/debit card', {totalBill})}>
-          <Text style={styles.optionText}>Credit/ Debit Card</Text>
-          <Icon
-            name="right"
-            size={13}
-            color={'blue'}
-            style={styles.iconstyle}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.options}
-          onPress={() => navigation.navigate('UPI',{totalBill})}>
-          <Text style={styles.optionText}>UPI</Text>
-          <Icon
-            name="right"
-            size={13}
-            color={'blue'}
-            style={styles.iconstyle}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.options}
-          onPress={() => navigation.navigate('Net Banking',{totalBill})}>
-          <Text style={styles.optionText}>Net Banking</Text>
-          <Icon
-            name="right"
-            size={13}
-            color={'blue'}
-            style={styles.iconstyle}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.options}
-          onPress={() => navigation.navigate('Pay On Service', {totalBill})}>
-          <Text style={styles.optionText}>Pay on Service</Text>
-          <Icon
-            name="right"
-            size={13}
-            color={'blue'}
-            style={styles.iconstyle}
-          />
-        </TouchableOpacity>
-      </View>
+      <Text>hi</Text>
     </ScrollView>
   );
 };

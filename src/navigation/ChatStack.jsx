@@ -5,7 +5,7 @@ import WebView from 'react-native-webview';
 const ChatStack = () => {
   return (
     <WebView
-      source={{uri: 'https://rohitbarate.github.io/portfoliowebsite-react/'}}
+      source={{uri: 'https://google.com'}}
       allowsBackForwardNavigationGestures="true"
       bounces="true"
       

@@ -28,7 +28,9 @@ const Home = ({ navigation }) => {
         <ImageBackground source={image} style={styles.image}>
           <Text style={styles.txt1}>Got Stuck? </Text>
           <Text style={styles.txt2}>Don't worry get a mechanic now</Text>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} 
+          onPress={()=>navigation.navigate('Bookings')}
+          >
             <Text style={styles.buttonStyle}>Hire Now</Text>
           </TouchableOpacity>
         </ImageBackground>
