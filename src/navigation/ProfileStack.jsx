@@ -6,6 +6,7 @@ import BellIcon from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native';
 import MyAccount from '../screens/activityScreens/MyAccount';
 import Help from '../screens/activityScreens/Help';
+import { useNavigationState } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator()
 
@@ -14,8 +15,7 @@ const ProfileStack = () => {
   return (
    <Stack.Navigator
    screenOptions={{
-   headerShadowVisible:false,
-   headerTitle:''
+  headerShown:false
    }}
   //  screenOptions={({navigation})=>({
   //   headerLeft: () => (

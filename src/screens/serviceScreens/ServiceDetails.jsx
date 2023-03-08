@@ -178,8 +178,8 @@ export default ServiceDetails;
 
 const styles = StyleSheet.create({
   container: {
-    width: 360,
-    color: "#ffffff",
+    width: '100%',
+    backgroundColor: "#ffffff",
   },
   HEADER: {
     fontSize: 18,

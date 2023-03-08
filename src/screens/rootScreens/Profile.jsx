@@ -14,6 +14,7 @@ import {profileOptions} from '../../components/data/DATA';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useSelector} from 'react-redux';
+import { getFocusedRouteNameFromRoute, useRoute } from '@react-navigation/native';
 
 const Profile = ({navigation}) => {
   const [user, setUser] = useState(

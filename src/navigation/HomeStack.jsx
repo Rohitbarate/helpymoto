@@ -26,69 +26,71 @@ import PayOnService from '../screens/paymentScreens/PayOnService';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ConfirmPayment from '../screens/paymentScreens/ConfirmPayment';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation, useNavigationState} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
-  const navigation = useNavigation();
+const HomeStack = ({navigation}) => {
 
   return (
     <Stack.Navigator
       initialRouteName="home"
-      screenOptions={{headerShown:false}}
-      // screenOptions={({navigation})=>({
-      //   presentation:'modal',
-      //   animation:'slide_from_right',
-      //   animationDuration:150,
-      //   animationTypeForReplace:'push',
-      //   headerTintColor: '#fff',
-      //   headerTitleAlign: 'center',
-      //   headerTitleStyle: {fontSize: 16, fontWeight: '600'},
-      //   headerStyle: {backgroundColor: '#5D5FEF'},
-      //   headerTitle: () => (
-      //     <View
-      //       style={{
-      //         display: 'flex',
-      //         flexDirection: 'row',
-      //         alignItems: 'center',
-      //       }}>
-      //       <Location name="location" size={24} color="#fff" />
-      //       <View
-      //         style={{
-      //           display: 'flex',
-      //           flexDirection: 'column',
-      //           marginLeft: 10,
-      //         }}>
-      //         <Text style={[styles.txt, {fontSize: 16}]}>Delhi </Text>
-      //         <Text style={styles.txt}>Change location</Text>
-      //       </View>
-      //     </View>
-      //   ),
-      //   headerRight: () => (
-      //     <TouchableOpacity
-      //      onPress={()=>navigation.navigate('UserStack')}
-      //     >
-      //       <Image
-      //         style={{height: 40, aspectRatio: 1, borderRadius: 20}}
-      //         source={require('../assets/images/user.png')}
-      //       />
-      //     </TouchableOpacity>
-      //   ),
-      // })}
-      >
+      screenOptions={({route,})=>({
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+        headerTitleStyle: {fontSize: 20, fontWeight: '600',textTransform:'capitalize'},
+        headerStyle: {backgroundColor: '#5D5FEF'},
+        headerShown: true,
+        headerRight: () => (
+          <TouchableOpacity
+           onPress={()=>navigation.navigate('Profile')}
+          >
+            <Image
+              style={{height: 40, aspectRatio: 1, borderRadius: 20}}
+              source={require('../assets/images/user.png')}
+            />
+          </TouchableOpacity>
+        ),
+        headerLeft: () => (
+          <TouchableOpacity
+          onPress={()=>navigation.openDrawer()}
+          >
+           <Icon name='bars' size={24}  color="#fff" />
+          </TouchableOpacity>
+        ),
+      })}
+  
+    >
       <Stack.Screen
         name="home"
         component={Home}
-        // options={({navigation})=>({
-        //   headerLeft: () => (
-        //     <TouchableOpacity 
-        //     onPress={()=>navigation.openDrawer()}
-        //      >
-        //       <Icon name="bars" size={24} color="#fff" />
-        //     </TouchableOpacity>
-        //   ),
-        // })}
+        options={({route,navigation})=>({
+          headerTitle:'Home',
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {fontSize: 20, fontWeight: '600',textTransform:'capitalize'},
+          headerStyle: {backgroundColor: '#5D5FEF'},
+          headerShown: true,
+          headerTitle: () => (
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Location name="location" size={24} color="#fff" />
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  marginLeft: 10,
+                }}>
+                <Text style={[styles.txt, {fontSize: 16}]}>Delhi </Text>
+                <Text style={styles.txt}>Change location</Text>
+              </View>
+            </View>
+          ),
+        })}
       />
       <Stack.Screen name="Hire Driver" component={HireDriver} />
       <Stack.Screen
@@ -101,82 +103,29 @@ const HomeStack = () => {
         //   },
         // }}
       />
+      <Stack.Screen name="Driver" component={DriverInfo} />
       <Stack.Screen
-        name="Driver"
-        component={DriverInfo}
-     
-      />
-      <Stack.Screen name="Cleaning Services" component={CleaningServices}
-      options={{
-        animation:'slide_from_bottom'
-      }}
+        name="Cleaning Services"
+        component={CleaningServices}
+        options={{
+          animation: 'slide_from_bottom',
+          // headerShown:false
+        }}
       />
       <Stack.Screen name="Towing Service" component={TowingServices} />
       <Stack.Screen
-        name="ServiceDetails"
+        name="Service Details"
         component={ServiceDetails}
         options={({route}) => ({
           headerTitle: route.params.item.serviceName,
-          headerShown: true,
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-          animation:"simple_push",
+          // headerShown: true,
+          animation: 'simple_push',
         })}
       />
       <Stack.Screen
         name="Payment"
         component={Payment}
-        options={{
-          headerShown: true,
-          headerTitle: 'Payment',
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-        }}
       />
-      {/* <Stack.Screen
-        name="Payment Methods"
-        component={PaymentMethods}
-        options={{
-          headerShown: true,
-          headerTitle: 'Payment Methods',
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-        }}
-      /> */}
-      <Stack.Screen name="credit/debit card" component={CrDbCard}  options={{
-          headerShown: true,
-          headerTitle: 'credit/debit card',
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-        }} />
-      <Stack.Screen name="UPI" component={Upi}  options={{
-          headerShown: true,
-          headerTitle: 'UPI',
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-        }} />
-      <Stack.Screen name="Net Banking" component={NetBanking}  options={{
-          headerShown: true,
-          headerTitle: 'Net Banking',
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-        }} />
-      <Stack.Screen name="Pay On Service" component={PayOnService}  options={{
-          headerShown: true,
-          headerTitle: 'Pay On Service',
-          headerTitleStyle: {
-            fontWeight: '900',
-          },
-        }} />
-      <Stack.Screen name="confirm payment" component={ConfirmPayment}  options={{
-          headerShown: false,
-        }} />
     </Stack.Navigator>
   );
 };

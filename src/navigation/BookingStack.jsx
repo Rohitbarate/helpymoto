@@ -28,7 +28,7 @@ const BookingStack = () => {
       tabBarLabelStyle: {fontSize: 15,fontWeight:'900'},
       tabBarScrollEnabled:true,
       tabBarPressColor:'#fff',
-
+     
     }}
     initialRouteName="All"
     >

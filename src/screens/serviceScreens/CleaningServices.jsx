@@ -35,7 +35,7 @@ const ServiceView = ({item}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate("ServiceDetails", {
+        navigation.navigate("Service Details", {
           item: item,
         });
       }}
@@ -146,7 +146,7 @@ return (
         renderItem={({ item }) => (
           <TouchableOpacity
           onPress={()=>{
-            navigation.navigate('ServiceDetails',
+            navigation.navigate('Service Details',
             {
             item:item
           })}}

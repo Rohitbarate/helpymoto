@@ -1,6 +1,10 @@
 import {StatusBar} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React, {useState, useEffect, useRef} from 'react';
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+  useRoute,
+} from '@react-navigation/native';
 import AuthStack from './src/navigation/AuthStack';
 import RootStack from './src/navigation/RootStack';
 import auth from '@react-native-firebase/auth';
@@ -25,6 +29,7 @@ const App = () => {
   const [authenticated, setAutheticated] = useState(true);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isAllSet, setIsAllSet] = useState(false);
+  const [routeIndex, setRouteIndex] = useState(0);
   const dispatch = useDispatch();
 
   const Drawer = createDrawerNavigator();
@@ -112,12 +117,17 @@ const App = () => {
     }
   };
 
+  const navigationRef = useNavigationContainerRef();
   return (
-    // <GestureHandlerRootView>
-      <NavigationContainer>
-        <DrawerNavigator/>
-        <BottomTab/>
-      </NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef}
+      onStateChange={() => {
+        const index = navigationRef.getState().index;
+        setRouteIndex(index);
+      }}>
+      <DrawerNavigator />
+      <BottomTab index={routeIndex} />
+    </NavigationContainer>
   );
 };
 
