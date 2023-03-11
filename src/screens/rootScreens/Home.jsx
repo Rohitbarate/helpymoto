@@ -102,7 +102,9 @@ const Home = ({ navigation }) => {
       </View>
       <View style={styles.row}>
         <Text style={styles.title}>Best Services</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+        onPress={()=>navigation.navigate('All Services')}
+        >
           <Text style={styles.seeAllBtn}>View All  <Arrow name="right" size={14} color="#3F41D1" /></Text>
         </TouchableOpacity>
       </View>
@@ -216,7 +218,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlignVertical: "center",
     textAlign:'center',
-    paddingHorizontal:2,
+    paddingHorizontal:5,
     color:'#000'
   },
   hireDrDiv: {

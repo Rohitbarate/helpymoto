@@ -218,28 +218,33 @@ const serviceTypes = [
   },
   {
     id: 3,
-    name: 'Tyres and Wheel Care ',
+    name: 'Tyre and Wheel Care ',
     img: require('../../assets/images/repicon.png'),
+    screen: 'tyreAndWheel',
   },
   {
     id: 4,
     name: 'AC Service and Repair',
     img: require('../../assets/images/acrepicon.png'),
+    screen:'AC Service'
   },
   {
     id: 5,
     name: 'Denting and Painting',
     img: require('../../assets/images/coloricon.png'),
+    screen:'Denting & Painting'
   },
   {
     id: 6,
-    name: 'Body Repairs',
+    name: 'Body Repair',
     img: require('../../assets/images/brepairricon.png'),
+    screen:'Body Repair'
   },
   {
     id: 7,
     name: 'Vehicle Service ',
     img: require('../../assets/images/serviceicon.png'),
+    screen:'Vehicle Service'
   },
 ];
 
@@ -327,29 +332,683 @@ const CleaningServicesData = [
   },
 ];
 
-// fQA data
-const FAQs = [
+const TyreWheelServicesData = [
   {
-    que: 'How this service is going to affect my vehicle condition?',
-    ans: 'The following terms and conditions, together with any referenced documents form a legal agreement between you and your employer, employees,agents, contractors and any other entity on whose behalf you accept these terms',
+    id: 1,
+    serviceName: 'Complete wheel care',
+    img: require('../../assets/images/wheel.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 2000,
+    offerPrice: 1200,
+    isTrending: false,
+    time: 3,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'How this service is going to affect my vehicle condition?',
+        ans: 'The following terms and conditions, together with any referenced documents form a legal agreement between you and your employer, employees,agents, contractors and any other entity on whose behalf you accept these terms',
+      },
+      {
+        que: 'Why should I choose this service?',
+        ans: 'A Privacy Policy agreement is the agreement where you specify if you collect personal data from your users,what kind of personal data you collect and what you do with that data.',
+      },
+    ],
   },
   {
-    que: 'Why should I choose this service?',
-    ans: 'A Privacy Policy agreement is the agreement where you specify if you collect personal data from your users,what kind of personal data you collect and what you do with that data.',
-  },
-  {
-    que: 'What is the payment method?',
-    ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
-  },
-  {
-    que: 'What if cleaning is not done properly?',
-    ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
-  },
-  {
-    que: 'How can Premium Members avail the discount offers?',
-    ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+    id: 2,
+    serviceName: 'Mud Flaps',
+    img: require('../../assets/images/wheel.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 800,
+    offerPrice: 600,
+    isTrending: true,
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
   },
 ];
+
+const ACServicesData = [
+  {
+    id: 1,
+    serviceName: 'High Performance AC Service',
+    img: require('../../assets/images/normalwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 4000,
+    offerPrice: 3200,
+    type:'Service Packages',
+    time: 3,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'How this service is going to affect my vehicle condition?',
+        ans: 'The following terms and conditions, together with any referenced documents form a legal agreement between you and your employer, employees,agents, contractors and any other entity on whose behalf you accept these terms',
+      },
+      {
+        que: 'Why should I choose this service?',
+        ans: 'A Privacy Policy agreement is the agreement where you specify if you collect personal data from your users,what kind of personal data you collect and what you do with that data.',
+      },
+    ],
+  },
+  {
+    id: 2,
+    serviceName: 'Regular AC Service',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 2000,
+    offerPrice: 1400,
+    type:'Service Packages',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 3,
+    serviceName: 'Heating Coil Replacement',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 3000,
+    offerPrice: 2650,
+    type: 'AC Fitments',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 4,
+    serviceName: 'V-Belt Replacement',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 1000,
+    offerPrice: 930,
+    type: 'AC Fitments',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 5,
+    serviceName: 'AC Blower Motor Replacement',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 2500,
+    offerPrice: 2000,
+    type: 'AC Fitments',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 6,
+    serviceName: 'Compressor Replacement',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'AC Fitments',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 7,
+    serviceName: 'Condenser Replacement',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'AC Fitments',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 8,
+    serviceName: 'Cooling Coil Replacement ',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'AC Fitments',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 9,
+    serviceName: 'Radiator Flush & Clean',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Radiator',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 10,
+    serviceName: 'Radiator Fan Motor Replacement',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Radiator',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 11,
+    serviceName: 'Radiator replacement',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Radiator',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+];
+
+const DentingPaintingServicesData = [
+  {
+    id: 1,
+    serviceName: 'front bumper',
+    img: require('../../assets/images/normalwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 4000,
+    offerPrice: 3200,
+    type:'Front Side',
+    time: 3,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'How this service is going to affect my vehicle condition?',
+        ans: 'The following terms and conditions, together with any referenced documents form a legal agreement between you and your employer, employees,agents, contractors and any other entity on whose behalf you accept these terms',
+      },
+      {
+        que: 'Why should I choose this service?',
+        ans: 'A Privacy Policy agreement is the agreement where you specify if you collect personal data from your users,what kind of personal data you collect and what you do with that data.',
+      },
+    ],
+  },
+  {
+    id: 2,
+    serviceName: 'Bonnet paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 2000,
+    offerPrice: 1400,
+    type:'Front Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 3,
+    serviceName: 'Boot paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 3000,
+    offerPrice: 2650,
+    type: 'Rear Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 4,
+    serviceName: 'Rear Bumper Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 1000,
+    offerPrice: 930,
+    type: 'Rear Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 5,
+    serviceName: 'full body Dent paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 2500,
+    offerPrice: 2000,
+    type: 'Whole Body',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 6,
+    serviceName: 'Alloy Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Whole Body',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 7,
+    serviceName: 'Left Fender Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Left Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 8,
+    serviceName: 'Left Front Door Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Left Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 9,
+    serviceName: 'Left Rear Door Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Left Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 10,
+    serviceName: 'Left Quarter Panel Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Left Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 11,
+    serviceName: 'Left Running Board Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Left Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 12,
+    serviceName: 'Right Fender Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Right Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 13,
+    serviceName: 'Right Front Door Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Right Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 14,
+    serviceName: 'Right Rear Door Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Right Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 15,
+    serviceName: 'Right Quarter Panel Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Right Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+  {
+    id: 16,
+    serviceName: 'Right Running Board Paint',
+    img: require('../../assets/images/deepwash.png'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi, sed magna dictumst faucibus at morbi. Hac mattis faucibus erat ut enim.',
+    price: 15000,
+    offerPrice: 12000,
+    type: 'Right Side',
+    time: 2,
+    warranty: 1,
+    offForMember: 10,
+    FAQ: [
+      {
+        que: 'What is the payment method?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+      {
+        que: 'What if cleaning is not done properly?',
+        ans: 'Our Return & Refund Policy template lets you get started with a Return and Refund Policy agreement.This template is free to download and use. According to TrueShip study, over 60% of customers review a Return/Refund Policy before they make a purchasing decision.',
+      },
+    ],
+  },
+];
+
+
 const profileOptions = [
   {
     id: 1,
@@ -503,6 +1162,9 @@ export {
   CleaningServicesData,
   profileOptions,
   bookings,
+  TyreWheelServicesData,
+  ACServicesData,
+  DentingPaintingServicesData
 };
 
 // {

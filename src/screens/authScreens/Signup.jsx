@@ -29,24 +29,24 @@ const Signup = ({navigation}) => {
  
   }, [])
 
- const signInWithGoogle = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo)
-      storeData(userInfo.user)
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log("user cancelled the login flow")
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log("operation (e.g. sign in) is in progress already")
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log("play services not available or outdated")
-      } else {
-        console.log(error ,"some other error happened")
-      }
-    }
-  };
+//  const signInWithGoogle = async () => {
+//     try {
+//       await GoogleSignin.hasPlayServices();
+//       const userInfo = await GoogleSignin.signIn();
+//       console.log(userInfo)
+//       storeData(userInfo.user)
+//     } catch (error) {
+//       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+//         console.log("user cancelled the login flow")
+//       } else if (error.code === statusCodes.IN_PROGRESS) {
+//         console.log("operation (e.g. sign in) is in progress already")
+//       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+//         console.log("play services not available or outdated")
+//       } else {
+//         console.log(error ,"some other error happened")
+//       }
+//     }
+//   };
   
 
   const SignupWithOtp = async number => {
@@ -77,13 +77,13 @@ const Signup = ({navigation}) => {
   const storeData = async user => {
     try {
      
-      const Val ={
-        ...user,
-        isAllSet:false
-      }
-      await AsyncStorage.clear()
-      await AsyncStorage.setItem('@user_info', JSON.stringify(Val));
-      console.log("sign scr user created");
+      // const Val ={
+      //   ...user,
+      //   isAllSet:false
+      // }
+      // await AsyncStorage.clear()
+      // await AsyncStorage.setItem('@user_info', JSON.stringify(Val));
+      // console.log("sign scr user created");
       // getData()
     } catch (e) {
       // saving error

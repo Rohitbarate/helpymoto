@@ -27,6 +27,12 @@ import PayOnService from '../screens/paymentScreens/PayOnService';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ConfirmPayment from '../screens/paymentScreens/ConfirmPayment';
 import {useNavigation, useNavigationState} from '@react-navigation/native';
+import AllServices from '../screens/serviceScreens/AllServices';
+import TyreAndWheelService from '../screens/serviceScreens/TyreAndWheelService';
+import AcRepair from '../screens/serviceScreens/AcRepair';
+import DentingPainting from '../screens/serviceScreens/DentingPainting';
+import BodyRepair from '../screens/serviceScreens/BodyRepair';
+import VehicleService from '../screens/serviceScreens/VehicleService';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,13 +57,7 @@ const HomeStack = ({navigation}) => {
             />
           </TouchableOpacity>
         ),
-        headerLeft: () => (
-          <TouchableOpacity
-          onPress={()=>navigation.openDrawer()}
-          >
-           <Icon name='bars' size={24}  color="#fff" />
-          </TouchableOpacity>
-        ),
+       
       })}
   
     >
@@ -90,6 +90,13 @@ const HomeStack = ({navigation}) => {
               </View>
             </View>
           ),
+          headerLeft: () => (
+            <TouchableOpacity
+            onPress={()=>navigation.openDrawer()}
+            >
+             <Icon name='bars' size={24}  color="#fff" />
+            </TouchableOpacity>
+          ),
         })}
       />
       <Stack.Screen name="Hire Driver" component={HireDriver} />
@@ -109,10 +116,13 @@ const HomeStack = ({navigation}) => {
         component={CleaningServices}
         options={{
           animation: 'slide_from_bottom',
-          // headerShown:false
         }}
       />
-      <Stack.Screen name="Towing Service" component={TowingServices} />
+      <Stack.Screen name="Towing Service" component={TowingServices} 
+       options={{
+        animation: 'slide_from_bottom',
+      }}
+      />
       <Stack.Screen
         name="Service Details"
         component={ServiceDetails}
@@ -125,6 +135,51 @@ const HomeStack = ({navigation}) => {
       <Stack.Screen
         name="Payment"
         component={Payment}
+      />
+      <Stack.Screen
+        name="All Services"
+        component={AllServices}
+        options={{
+          animation:'slide_from_right'
+        }}
+      />
+      <Stack.Screen
+        name="tyreAndWheel"
+        component={TyreAndWheelService}
+        options={{
+          animation:'slide_from_right',
+          headerTitle:'Tyre and Wheel Care'
+        }}
+      />
+      <Stack.Screen
+        name="AC Service"
+        component={AcRepair}
+        options={{
+          animation:'slide_from_right',
+          headerTitle:'AC Service & Repair'
+        }}
+      />
+      <Stack.Screen
+        name="Denting & Painting"
+        component={DentingPainting}
+        options={{
+          animation:'slide_from_right',
+          // headerTitle:'AC Service & Repair'
+        }}
+      />
+      <Stack.Screen
+        name="Body Repair"
+        component={BodyRepair}
+        options={{
+          animation:'slide_from_right',
+        }}
+      />
+      <Stack.Screen
+        name="Vehicle Service"
+        component={VehicleService}
+        options={{
+          animation:'slide_from_right',
+        }}
       />
     </Stack.Navigator>
   );

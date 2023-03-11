@@ -2,44 +2,27 @@ import {View, TouchableOpacity, Image, Text, StyleSheet, Alert} from 'react-nati
 import React from 'react';
 import {
   createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ProfileStack from './ProfileStack';
 import BookingStack from './BookingStack';
 import ChatStack from './ChatStack';
-import MyAccount from '../screens/activityScreens/MyAccount';
 import Help from '../screens/activityScreens/Help';
 import TermsPolicy from '../screens/activityScreens/TermsPolicy';
 import HomeStack from './HomeStack';
 import {
   getFocusedRouteNameFromRoute,
-  useNavigationState,
-  useRoute,
 } from '@react-navigation/native';
 import Location from 'react-native-vector-icons/Octicons';
+import DrawerView from '../components/organisms/DrawerView';
 
 function getHeaderTitle(route) {
   return getFocusedRouteNameFromRoute(route);
 }
 
-function DrawerView(props) {
-  return (
-    <DrawerContentScrollView>
-      <View>
-        <Text style={{color: '#000'}}>ok</Text>
-      </View>
-      <DrawerItemList {...props} />
-    </DrawerContentScrollView>
-  );
-}
 
 const DrawerNavigator = () => {
   const Drawer = createDrawerNavigator();
-
-  // const index = useNavigationState(state => state.index);
-  // console.log('drawer  ' + index);
 
   return (
     <Drawer.Navigator
@@ -174,6 +157,7 @@ const DrawerNavigator = () => {
 export default DrawerNavigator;
 
 const styles = StyleSheet.create({
+
   txt: {
     color: '#fff',
     fontSize: 12,
