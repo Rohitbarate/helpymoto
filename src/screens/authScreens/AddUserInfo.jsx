@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, { useEffect, useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Input from '../../components/atoms/Input';
 import auth from '@react-native-firebase/auth';
 
@@ -23,18 +22,18 @@ const AddUserInfo = ({navigation}) => {
   // },[])
 
   const userAllSet = () => {
-    AsyncStorage.getItem('@user_info').then((userData)=>{
-      setUser(JSON.parse(userData))
-      console.log('user'+user)})
+    // AsyncStorage.getItem('@user_info').then((userData)=>{
+    //   setUser(JSON.parse(userData))
+    //   console.log('user'+user)})
     // const userData = await auth().currentUser;
     // setuser(userData);
     // console.log(JSON.stringify(user));
-    const userData ={
-      ...user,
-      isAllSet:true
-    }
-    AsyncStorage.setItem('@user_info',JSON.stringify(userData))
-    console.log(userData)
+    // const userData ={
+    //   ...user,
+    //   isAllSet:true
+    // }
+    // AsyncStorage.setItem('@user_info',JSON.stringify(userData))
+    // console.log(userData)
   };
 
   return (

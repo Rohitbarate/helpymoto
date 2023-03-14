@@ -25,29 +25,29 @@ const Login = ({navigation}) => {
  
   
 
-  const loginWithOtp = async number => {
-    setLoading(true);
-    try {
-      const cnfm = await auth().signInWithPhoneNumber(number);
-      setConfirm(cnfm);
-    } catch (error) {
-      console.log(error);
-    }
-    setLoading(false);
+  // const loginWithOtp = async number => {
+  //   setLoading(true);
+  //   try {
+  //     const cnfm = await auth().signInWithPhoneNumber(number);
+  //     setConfirm(cnfm);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   setLoading(false);
    
-  };
+  // };
 
-  async function confirmCode(otp) {
-    setLoading(true)
-    try {
-      await confirm.confirm(otp);
-      Alert.alert('login successfully');
-      setConfirm(null)
-    } catch (error) {
-      console.log('Invalid code.' + error);
-    }
-    setLoading(false);
-  }
+  // async function confirmCode(otp) {
+  //   setLoading(true)
+  //   try {
+  //     await confirm.confirm(otp);
+  //     Alert.alert('login successfully');
+  //     setConfirm(null)
+  //   } catch (error) {
+  //     console.log('Invalid code.' + error);
+  //   }
+  //   setLoading(false);
+  // }
 
   // auth().onAuthStateChanged(user => {
   //   if (user) {
@@ -95,7 +95,7 @@ const Login = ({navigation}) => {
                   backgroundColor: mobNo.length < 10 ? 'grey' : '#5D5FEF',
                 },
               ]}
-              onPress={() => loginWithOtp('+91' + mobNo)}>
+              onPress={() => {}}>
               {loading ? (
                 <ActivityIndicator color="#ffffff" size={34} />
               ) : (
@@ -129,9 +129,9 @@ const Login = ({navigation}) => {
                   marginLeft: 5,
                 }}
                 onPress={() => {
-                  setConfirm(null);
-                  setOtp('');
-                  setLoading(false)
+                  // setConfirm(null);
+                  // setOtp('');
+                  // setLoading(false)
                 }}>
                 <Text style={{color: '#fff', fontSize: 12, fontWeight: '900'}}>
                   Change Number
@@ -148,7 +148,9 @@ const Login = ({navigation}) => {
                   justifyContent: 'center',
                   marginLeft: 5,
                 }}
-                onPress={() =>{ loginWithOtp('+91' + mobNo);setOtp('');}}>
+                onPress={() =>{ 
+                  // loginWithOtp('+91' + mobNo);setOtp('');
+                  }}>
                 <Text style={{color: '#fff', fontSize: 12, fontWeight: '900'}}>
                   Resend Otp
                 </Text>
@@ -170,7 +172,11 @@ const Login = ({navigation}) => {
                   backgroundColor: otp.length < 6 ? 'grey' : '#5D5FEF',
                 },
               ]}
-              onPress={() => confirmCode(otp)}>
+              onPress={() => 
+              {
+                // confirmCode(otp)
+              }
+              }>
                {loading ? (
                 <ActivityIndicator color="#ffffff" size={34}/>
               ) : (
@@ -233,9 +239,9 @@ const Login = ({navigation}) => {
                   justifyContent: 'center',
                 }}
                 onPress={() => {
-                  setConfirm(null);
-                  setOtp('');
-                  setLoading(false)
+                  // setConfirm(null);
+                  // setOtp('');
+                  // setLoading(false)
                 }}>
                 <Text style={{color: '#15ff00', fontSize: 15, fontWeight: '900'}}>
                   EDIT PHONE

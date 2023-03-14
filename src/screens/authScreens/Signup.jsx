@@ -13,8 +13,7 @@ import {
 import React, {useState,useEffect} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 
 const Signup = ({navigation}) => {
   const [mobNo, setMobNo] = useState('');
@@ -25,7 +24,7 @@ const Signup = ({navigation}) => {
   
 
   useEffect(() => {
-    GoogleSignin.configure();
+    // GoogleSignin.configure();
  
   }, [])
 
@@ -50,27 +49,27 @@ const Signup = ({navigation}) => {
   
 
   const SignupWithOtp = async number => {
-    setLoading(true);
-    try {
-      const cnfm = await auth().signInWithPhoneNumber(number);
-      setConfirm(cnfm);
-    } catch (error) {
-      console.log(error);
-    }
-    setLoading(false);
+    // setLoading(true);
+    // try {
+    //   const cnfm = await auth().signInWithPhoneNumber(number);
+    //   setConfirm(cnfm);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // setLoading(false);
    
   };
 
   async function confirmCode(otp) {
-    setLoading(true)
-    try {
-      await confirm.confirm(otp);
-      Alert.alert('Signup successfully');
-      setConfirm(null)
-    } catch (error) {
-      console.log('Invalid code.' + error);
-    }
-    setLoading(false);
+    // setLoading(true)
+    // try {
+    //   await confirm.confirm(otp);
+    //   Alert.alert('Signup successfully');
+    //   setConfirm(null)
+    // } catch (error) {
+    //   console.log('Invalid code.' + error);
+    // }
+    // setLoading(false);
   }
 
 
@@ -125,7 +124,9 @@ const Signup = ({navigation}) => {
                   backgroundColor: mobNo.length < 10 ? 'grey' : '#5D5FEF',
                 },
               ]}
-              onPress={() => SignupWithOtp('+91' + mobNo)}>
+              onPress={() => {}
+              // SignupWithOtp('+91' + mobNo)
+              }>
               {loading ? (
                 <ActivityIndicator color="#ffffff" size={34} />
               ) : (
@@ -178,7 +179,9 @@ const Signup = ({navigation}) => {
                   justifyContent: 'center',
                   marginLeft: 5,
                 }}
-                onPress={() =>{ SignupWithOtp('+91' + mobNo);setOtp('');}}>
+                onPress={() =>{
+                  //  SignupWithOtp('+91' + mobNo);setOtp('');
+                   }}>
                 <Text style={{color: '#fff', fontSize: 12, fontWeight: '900'}}>
                   Resend Otp
                 </Text>
@@ -200,7 +203,9 @@ const Signup = ({navigation}) => {
                   backgroundColor: otp.length < 6 ? 'grey' : '#5D5FEF',
                 },
               ]}
-              onPress={() => confirmCode(otp)}>
+              onPress={() => {
+                // confirmCode(otp)
+                }}>
                {loading ? (
                 <ActivityIndicator color="#ffffff" size={34}/>
               ) : (
@@ -235,7 +240,7 @@ const Signup = ({navigation}) => {
           <View style={styles.row}>
             <TouchableOpacity 
             onPress={()=>{
-              signInWithGoogle()
+              // signInWithGoogle()
             }} 
             style={styles.icon}
             >

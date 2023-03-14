@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {profileOptions} from '../../components/data/DATA';
 import Icon from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
@@ -25,21 +24,6 @@ const Profile = ({navigation}) => {
 
   // const storedUser = ;
 
-  useEffect(() => {
-    console.log(user);
-  }, []);
-  const getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('@user_info');
-      if (value !== null) {
-        setUser(JSON.parse(value));
-        console.log('rohit: ', user.photo);
-      }
-    } catch (e) {
-      // error reading value
-      console.log('error', e);
-    }
-  };
 
   return (
     <ScrollView style={{flex: 1}}>

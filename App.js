@@ -7,20 +7,11 @@ import {
 import AuthStack from './src/navigation/AuthStack';
 // import RootStack from './src/navigation/RootStack';
 import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+// import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useSelector, useDispatch} from 'react-redux';
 import store from './src/redux/store';
 import {createUser} from './src/redux/actions';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-// import {GestureHandlerRootView} from 'react-native-gesture-handler';
-// import Profile from './src/screens/rootScreens/Profile';
-// import PaymentMethods from './src/screens/paymentScreens/PaymentMethods';
-// import Root from './src/navigation/DrawerNavigator';
-// import HomeStack from './src/navigation/HomeStack';
-// import ProfileStack from './src/navigation/ProfileStack';
-// import ChatStack from './src/navigation/ChatStack';
-// import BookingStack from './src/navigation/BookingStack';
 import DrawerNavigator from './src/navigation/DrawerNavigator';
 import BottomTab from './src/components/organisms/BottomTab';
 
@@ -76,18 +67,18 @@ const App = () => {
   // });
 
   // check user logged with email
-  const isSignedIn = async () => {
-    const isSignedIn = await GoogleSignin.isSignedIn();
-    if (isSignedIn) {
-      const currentUser = await GoogleSignin.getCurrentUser();
-      setAutheticated(true);
-      setLoggedUser(currentUser);
-      storeData(currentUser.user);
-      console.log('islog', currentUser.user);
-    } else {
-      setAutheticated(false);
-    }
-  };
+  // const isSignedIn = async () => {
+  //   const isSignedIn = await GoogleSignin.isSignedIn();
+  //   if (isSignedIn) {
+  //     const currentUser = await GoogleSignin.getCurrentUser();
+  //     setAutheticated(true);
+  //     setLoggedUser(currentUser);
+  //     storeData(currentUser.user);
+  //     console.log('islog', currentUser.user);
+  //   } else {
+  //     setAutheticated(false);
+  //   }
+  // };
 
   // const storeData = async phone => {
   //   try {
